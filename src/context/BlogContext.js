@@ -13,6 +13,8 @@ const blogReducer = (state, action) => {
           content: action.payload.content
         }
       ]
+    case 'edit_blogpost':
+      return state
     default:
       return state
   }
@@ -21,6 +23,13 @@ const blogReducer = (state, action) => {
 const addBlogPost = (dispatch) => {
   return (title, content, callback) => {
     dispatch({ type: 'add_blogpost', payload: { title, content } })
+    callback()
+  }
+}
+
+const editBlogPost = (dispatch) => {
+  return (title, content, callback) => {
+    dispatch({ type: 'edit_blogpost', payload: { title, content } })
     callback()
   }
 }
